@@ -156,4 +156,22 @@ public class TeknonymyServiceTest {
   }
 
 
+  @Test
+  public void testchildfatherSameName() {
+    Person child7 = new Person("Child7", 'M', new Person[]{}, LocalDateTime.of(2050, 1, 1, 0, 0));
+    Person child6 = new Person("Child6", 'F', new Person[]{}, LocalDateTime.of(2040, 1, 1, 0, 0));
+      // Generation 3
+    Person child5 = new Person("Child5", 'M', new Person[]{}, LocalDateTime.of(2030, 1, 1, 0, 0));
+    Person child4 = new Person("Child4", 'F', new Person[]{child6,child7}, LocalDateTime.of(2020, 1, 1, 0, 0));
+    Person child3 = new Person("Child3", 'M', new Person[]{child4}, LocalDateTime.of(2010, 1, 1, 0, 0));
+    // Generation 2
+    Person child2 = new Person("Child2", 'F', new Person[]{child3,child4,child5,child6}, LocalDateTime.of(2000, 1, 1, 0, 0));
+    // Generation 1 (root)
+    Person person = new Person("Root", 'M', new Person[]{child2}, LocalDateTime.of(1990, 1, 1, 0, 0));
+
+    TeknonymyService service = new TeknonymyService();
+    String result = service.getTeknonymy(person);
+    assertEquals("great-great-grandfather of Child6", result);
+  }
+
 }
