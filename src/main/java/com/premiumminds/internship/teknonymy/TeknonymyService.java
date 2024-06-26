@@ -6,7 +6,6 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Comparator;
 import java.time.LocalDateTime;
 
 class TeknonymyService implements ITeknonymyService {
