@@ -43,8 +43,7 @@ class TeknonymyService implements ITeknonymyService {
 
             // Verifica se o descendente atual é o mais velho na geração mais distante
             if (current != person && 
-                (oldestDescendant == null ||
-                currentGeneration > maxGeneration ||
+                (currentGeneration > maxGeneration ||
                 (currentGeneration == maxGeneration && current.dateOfBirth().isBefore(oldestDescendant.dateOfBirth())))) {
                 
                 oldestDescendant = current;
